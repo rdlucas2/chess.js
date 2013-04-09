@@ -1,7 +1,17 @@
 //requires jquery
 
-//CLASSES-----------------------------------------------------------------------------
+//Helper functions
+function arraysEqual(arr1, arr2) {
+    if(arr1.length !== arr2.length)
+        return false;
+    for(var i = arr1.length; i--;) {
+        if(arr1[i] !== arr2[i])
+            return false;
+    }
+    return true;
+}
 
+//Classes and methods
 function Player(color, active) {
     this.active = active;
     this.color = color;
@@ -73,6 +83,12 @@ Piece.prototype.Click = function() {
         //Get the clicked piece.
         var currentPiece = GetPiece($(this).children('.piece').attr('id'));
 
+        var whiteKing = new King();
+        whiteKing = GetPiece('wKing');
+
+        var blackKing = new King();
+        blackKing = GetPiece('bKing');
+
         //If this is the first time a piece is clicked, set it active, make it the last piece clicked.
         if(lastPieceClicked == null) {
             if(currentPlayer.active == true && currentPlayer.color == currentPiece.color) {
@@ -93,11 +109,18 @@ Piece.prototype.Click = function() {
                 lastPieceClicked = null;
                 lastSquareOfPiece = null;
             } else {
-                //valid move to empty or enemy square
-                currentSquare.piece = lastPieceClicked;
                 lastPieceClicked.active = false;
-                var validMove = lastPieceClicked.ValidateMove(currentSquare, lastSquareOfPiece);
+                var validMove = false
+                if ((whiteKing.inCheck() == true && currentPlayer.color == 'white') || (blackKing.inCheck() == true && currentPlayer.color == 'black')) {
+                    //bad move - causes king to be in check - may want to move this check somewhere else or do it multiple times
+                    console.log('not yet implemented');
+                    validMove = false;
+                } else {
+                    //check if the move is ok based on the type of piece
+                    validMove = lastPieceClicked.ValidateMove(currentSquare, lastSquareOfPiece);
+                }
                 if(validMove) {
+                    currentSquare.piece = lastPieceClicked;
                     lastPieceClicked.Move(currentSquare,lastSquareOfPiece);
                     gameboard.Draw();
                     currentPlayer.ChangeActive(players);
@@ -113,19 +136,49 @@ Pawn.prototype = new Piece();
 
 function Pawn() {
     Piece.apply(this, arguments);
+    this.initialMove = true;
 }
 
 Pawn.prototype.ValidateMove = function(currentSquare, lastSquareOfPiece) {
     var validMove = false;
-    if(currentSquare.piece.color == "white") {
-        if(currentSquare.position[1] == lastSquareOfPiece.position[1] - 1) {
-            validMove = true;
+        if(this.color == "white") {
+            //allow for moving 2 squares on first move
+            if(this.initialMove) {
+                if(currentSquare.position[1] == lastSquareOfPiece.position[1] - 2 && currentSquare.position[0] == lastSquareOfPiece.position[0] && currentSquare.piece == null) {
+                    validMove = true;
+                }
+            }
+            //normal move
+            if(currentSquare.position[1] == lastSquareOfPiece.position[1] - 1 && currentSquare.position[0] == lastSquareOfPiece.position[0] && currentSquare.piece == null) {
+                validMove = true;
+            } else
+            //taking a piece
+            if(currentSquare.position[1] == lastSquareOfPiece.position[1] - 1 && currentSquare.piece != null && currentSquare.position[0] != lastSquareOfPiece.position[0]) {
+                validMove = true;
+            }
+            //add logic for taking another pawn en passant
+            //add logic for pawn promotion
         }
-    }
-    if(currentSquare.piece.color == "black") {
-        if(currentSquare.position[1] == lastSquareOfPiece.position[1] + 1) {
-            validMove = true;
+        if(this.color == "black") {
+            //allow for moving 2 squares on first move
+            if(this.initialMove) {
+                if(currentSquare.position[1] == lastSquareOfPiece.position[1] + 2 && currentSquare.position[0] == lastSquareOfPiece.position[0] && currentSquare.piece == null) {
+                    validMove = true;
+                }
+            }
+            //normal move
+            if(currentSquare.position[1] == lastSquareOfPiece.position[1] + 1 && currentSquare.position[0] == lastSquareOfPiece.position[0] && currentSquare.piece == null) {
+                validMove = true;
+            } else
+            //taking a piece
+            if(currentSquare.position[1] == lastSquareOfPiece.position[1] + 1 && currentSquare.piece != null && currentSquare.position[0] != lastSquareOfPiece.position[0]) {
+                validMove = true;
+            }
+            //add logic for taking another pawn en passant
+            //add logic for promotion
         }
+    if(validMove) {
+        this.initialMove = false;
     }
     return validMove;
 }
@@ -134,13 +187,98 @@ Rook.prototype = new Piece();
 
 function Rook() {
     Piece.apply(this, arguments);
+    this.canCastle = true;
 }
 
-Rook.prototype.ValidateMove = function() {
+Rook.prototype.ValidateMove = function(currentSquare, lastSquareOfPiece) {
     var validMove = false;
 
-    console.log('not yet implemented');
-    validMove = true;
+    var rank = lastSquareOfPiece.position[0]; //x
+    var file = lastSquareOfPiece.position[1]; //y
+    var possible = [];
+    var x = null;
+
+    //look right
+    for(var i=0; i<8; i++) {
+        if(rank+i <= 7) {
+            x = GetSquareByPosition([rank+i,file]);
+            if(x.piece != null) {
+                if(x.piece.color != this.color) {
+                    possible.push(x.position);
+                    i=8;
+                }
+                if(x.piece.color == this.color && x.piece != this) {
+                    i=8;
+                }
+            } else if(x.piece == null) {
+                possible.push(x.position);
+            }
+        }
+    }
+
+    //look left
+    for(var i=0; i<8; i++) {
+        if(rank-i >= 0) {
+            x = GetSquareByPosition([rank-i,file]);
+            if(x.piece != null) {
+                if(x.piece.color != this.color) {
+                    possible.push(x.position);
+                    i=8;
+                }
+                if(x.piece.color == this.color && x.piece != this) {
+                    i=8;
+                }
+            } else if(x.piece == null) {
+                possible.push(x.position);
+            }
+        }
+    }
+
+    //look up
+    for(var i=0; i<8; i++) {
+        if(file+i <= 7) {
+            x = GetSquareByPosition([rank,file+i]);
+            if(x.piece != null) {
+                if(x.piece.color != this.color) {
+                    possible.push(x.position);
+                    i=8;
+                }
+                if(x.piece.color == this.color && x.piece != this) {
+                    i=8;
+                }
+            } else if(x.piece == null) {
+                possible.push(x.position);
+            }
+        }
+    }
+
+    //look down
+    for(var i=0; i<8; i++) {
+        if(file-i >= 0) {
+            x = GetSquareByPosition([rank,file-i]);
+            if(x.piece != null) {
+                if(x.piece.color != this.color) {
+                    possible.push(x.position);
+                    i=8
+                }
+                if(x.piece.color == this.color && x.piece != this) {
+                    i=8;
+                }
+            } else if(x.piece == null) {
+                possible.push(x.position);
+            }
+        }
+    }
+
+    var newPosition = [currentSquare.position[0], currentSquare.position[1]];
+
+    for(var i=0; i<possible.length; i++) {
+        var validMove = arraysEqual(newPosition, possible[i]);
+        if(validMove) {
+            this.canCastle = false;
+            break;
+        }
+    }
 
     return validMove;
 }
@@ -151,8 +289,10 @@ function Knight() {
     Piece.apply(this, arguments);
 }
 
-Knight.prototype.ValidateMove = function() {
+Knight.prototype.ValidateMove = function(currentSquare, lastSquareOfPiece) {
     var validMove = false;
+
+    //can move over 2 - up/down 1, OR up/down 2 over 1
 
     console.log('not yet implemented');
     validMove = true;
@@ -166,8 +306,10 @@ function Bishop() {
     Piece.apply(this, arguments);
 }
 
-Bishop.prototype.ValidateMove = function() {
+Bishop.prototype.ValidateMove = function(currentSquare, lastSquareOfPiece) {
     var validMove = false;
+
+    //can move "infinitely" in any diagonal direction except if occupied by a piece - must remain on same color
 
     console.log('not yet implemented');
     validMove = true;
@@ -181,8 +323,10 @@ function Queen() {
     Piece.apply(this, arguments);
 }
 
-Queen.prototype.ValidateMove = function() {
+Queen.prototype.ValidateMove = function(currentSquare, lastSquareOfPiece) {
     var validMove = false;
+
+    //can move "infinitely" in any direction except if occupied by a piece
 
     console.log('not yet implemented');
     validMove = true;
@@ -194,15 +338,30 @@ King.prototype = new Piece();
 
 function King() {
     Piece.apply(this, arguments);
+    this.canCastle = true;
+    this.checkmated = false;
 }
 
-King.prototype.ValidateMove = function() {
+King.prototype.ValidateMove = function(currentSquare, lastSquareOfPiece) {
     var validMove = false;
+
+    //logic for castling (if click on rook of same color - set new position)
+
+    //logic for moving 1 square in any direction - and does not put king in check
 
     console.log('not yet implemented');
     validMove = true;
 
+    if(validMove) {
+        this.canCastle = false;
+    }
     return validMove;
+}
+
+King.prototype.inCheck = function() {
+    //is the king in check or checkmate?
+    console.log('not yet implemented');
+    return false;
 }
 
 
@@ -252,9 +411,25 @@ Square.prototype.Get = function(squareName) {
     }
 }
 
-//APPLICATION TESTING------------------------------------------------------------------
-//Make the pieces
+function GetSquareByPosition(squarePosition) {
+    var result = new Square();
+    var position = [];
+    position[0] = squarePosition[0];
+    position[1] = squarePosition[1];
 
+    for(var i=0; i<squares.length; i++) {
+        var x = arraysEqual(squares[i].position, position)
+        if(x) {
+            result.name = squares[i].name;
+            result.color = squares[i].color;
+            result.position = squares[i].position;
+            result.piece = squares[i].piece;
+        }
+    }
+    return result;
+}
+
+//Make the pieces
 var wKing    = new King('wKing',    'white', 'king',   '<img class="piece" id="wKing" src="images/wKing.gif" alt="chess piece - wking"/>');
 var wQueen   = new Queen('wQueen',   'white', 'queen',  '<img class="piece" id="wQueen" src="images/wQueen.gif" alt="chess piece - wqueen"/>');
 var wBishop1 = new Bishop('wBishop1', 'white', 'bishop', '<img class="piece" id="wBishop1" src="images/wBishop.gif" alt="chess piece - wbishop"/>');
@@ -300,11 +475,10 @@ var pieces = [wQueen,   wKing,    wBishop1, wBishop2,
               bPawn1,   bPawn2,   bPawn3,   bPawn4,
               bPawn5,   bPawn6,   bPawn7,   bPawn8];
 
-//setup the board
+//setup each square
 var white = 'white';
 var black = 'black';
 
-//setup each square
 var square1  = new Square('square1',  white, [0,0], bRook1);
 var square2  = new Square('square2',  black, [1,0], bKnight1);
 var square3  = new Square('square3',  white, [2,0], bBishop1);
