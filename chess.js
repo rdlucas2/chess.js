@@ -292,10 +292,59 @@ function Knight() {
 Knight.prototype.ValidateMove = function(currentSquare, lastSquareOfPiece) {
     var validMove = false;
 
-    //can move over 2 - up/down 1, OR up/down 2 over 1
+    var rank = lastSquareOfPiece.position[0];
+    var file = lastSquareOfPiece.position[1];
+    var possible = [];
+    var x = null;
 
-    console.log('not yet implemented');
-    validMove = true;
+    //up 2 right 1
+    if(rank+1 <= 7 && file+2 <= 7) {
+        possible.push([rank+1,file+2]);
+    }
+
+    //up 2 left 1
+    if(rank-1 >= 0 && file+2 <= 7) {
+        possible.push([rank-1,file+2]);
+    }
+
+    //left 2 up 1
+    if(rank-2 >= 0 && file+1 <= 7) {
+        possible.push([rank-2,file+1]);
+    }
+
+    //left 2 down 1
+    if(rank-2 >= 0 && file-1 >= 0) {
+        possible.push([rank-2,file-1]);
+    }
+
+    //right 2 up 1
+    if(rank+2 <= 7 && file+1 <= 7) {
+        possible.push([rank+2,file+1]);
+    }
+
+    //right 2 down 1
+    if(rank+2 <= 7 && file-1 >= 0) {
+        possible.push([rank+2,file-1]);
+    }
+
+    //down 2 right 1
+    if(rank+1 <= 7 && file-2 >= 0) {
+        possible.push([rank+1,file-2]);
+    }
+
+    //down 2 left 1
+    if(rank-1 >= 0 && file-2 >= 0) {
+        possible.push([rank-1,file-2]);
+    }
+
+    var newPosition = [currentSquare.position[0], currentSquare.position[1]];
+
+    for(var i=0; i<possible.length; i++) {
+        validMove = arraysEqual(newPosition, possible[i]);
+        if(validMove){
+            break;
+        }
+    }
 
     return validMove;
 }

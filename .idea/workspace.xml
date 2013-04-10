@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8c282a2-adae-4f5d-bf97-bda45b060a92" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chess.js" afterPath="$PROJECT_DIR$/chess.js" />
     </list>
     <ignored path="funtimes.iws" />
@@ -26,9 +25,9 @@
       <file leaf-file-name="chess.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/chess.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="18" selection-start="37" selection-end="37" vertical-scroll-proportion="0.04694836">
+            <state line="393" column="0" selection-start="11885" selection-end="11885" vertical-scroll-proportion="5.9849625">
               <folding>
-                <marker date="1365477114000" expanded="true" signature="11647:11658" placeholder="..." />
+                <marker date="1365565131000" expanded="true" signature="12730:12741" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -256,7 +255,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="310" column="0" selection-start="10259" selection-end="10259" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1365477114000" expanded="true" signature="11647:11658" placeholder="..." />
+            <marker date="1365565131000" expanded="true" signature="12730:12741" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -286,7 +285,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="38" column="0" selection-start="1200" selection-end="1200" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1365477114000" expanded="true" signature="11647:11658" placeholder="..." />
+            <marker date="1365565131000" expanded="true" signature="12730:12741" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -309,7 +308,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="115" column="0" selection-start="4639" selection-end="4639" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1365477114000" expanded="true" signature="11647:11658" placeholder="..." />
+            <marker date="1365565131000" expanded="true" signature="12730:12741" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -349,9 +348,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/chess.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="18" selection-start="37" selection-end="37" vertical-scroll-proportion="0.04694836">
+        <state line="393" column="0" selection-start="11885" selection-end="11885" vertical-scroll-proportion="5.9849625">
           <folding>
-            <marker date="1365477114000" expanded="true" signature="11647:11658" placeholder="..." />
+            <marker date="1365565131000" expanded="true" signature="12730:12741" placeholder="..." />
           </folding>
         </state>
       </provider>
