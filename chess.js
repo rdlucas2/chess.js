@@ -358,10 +358,91 @@ function Bishop() {
 Bishop.prototype.ValidateMove = function(currentSquare, lastSquareOfPiece) {
     var validMove = false;
 
-    //can move "infinitely" in any diagonal direction except if occupied by a piece - must remain on same color
+    var rank = lastSquareOfPiece.position[0]; //x
+    var file = lastSquareOfPiece.position[1]; //y
+    var possible = [];
+    var x = null;
 
-    console.log('not yet implemented');
-    validMove = true;
+    //look up right
+    for(var i=0; i<8; i++) {
+        if(rank+i <= 7 && file+i <=7) {
+            x = GetSquareByPosition([rank+i,file+i]);
+            if(x.piece != null) {
+                if(x.piece.color != this.color) {
+                    possible.push(x.position);
+                    i=8;
+                }
+                if(x.piece.color == this.color && x.piece != this) {
+                    i=8;
+                }
+            } else if(x.piece == null) {
+                possible.push(x.position);
+            }
+        }
+    }
+
+    //look down right
+    for(var i=0; i<8; i++) {
+        if(rank+i <= 7 && file-i >= 0) {
+            x = GetSquareByPosition([rank+i,file-i]);
+            if(x.piece != null) {
+                if(x.piece.color != this.color) {
+                    possible.push(x.position);
+                    i=8;
+                }
+                if(x.piece.color == this.color && x.piece != this) {
+                    i=8;
+                }
+            } else if(x.piece == null) {
+                possible.push(x.position);
+            }
+        }
+    }
+
+    //look up left
+    for(var i=0; i<8; i++) {
+        if(rank-i >= 0 && file+i <=7) {
+            x = GetSquareByPosition([rank-i,file+i]);
+            if(x.piece != null) {
+                if(x.piece.color != this.color) {
+                    possible.push(x.position);
+                    i=8;
+                }
+                if(x.piece.color == this.color && x.piece != this) {
+                    i=8;
+                }
+            } else if(x.piece == null) {
+                possible.push(x.position);
+            }
+        }
+    }
+
+    //look down left
+    for(var i=0; i<8; i++) {
+        if(rank-i >= 0 && file-i >= 0) {
+            x = GetSquareByPosition([rank-i,file-i]);
+            if(x.piece != null) {
+                if(x.piece.color != this.color) {
+                    possible.push(x.position);
+                    i=8;
+                }
+                if(x.piece.color == this.color && x.piece != this) {
+                    i=8;
+                }
+            } else if(x.piece == null) {
+                possible.push(x.position);
+            }
+        }
+    }
+
+    var newPosition = [currentSquare.position[0], currentSquare.position[1]];
+
+    for(var i=0; i<possible.length; i++) {
+        var validMove = arraysEqual(newPosition, possible[i]);
+        if(validMove) {
+            break;
+        }
+    }
 
     return validMove;
 }
@@ -375,10 +456,163 @@ function Queen() {
 Queen.prototype.ValidateMove = function(currentSquare, lastSquareOfPiece) {
     var validMove = false;
 
-    //can move "infinitely" in any direction except if occupied by a piece
+    var rank = lastSquareOfPiece.position[0]; //x
+    var file = lastSquareOfPiece.position[1]; //y
+    var possible = [];
+    var x = null;
 
-    console.log('not yet implemented');
-    validMove = true;
+    //look up right
+    for(var i=0; i<8; i++) {
+        if(rank+i <= 7 && file+i <=7) {
+            x = GetSquareByPosition([rank+i,file+i]);
+            if(x.piece != null) {
+                if(x.piece.color != this.color) {
+                    possible.push(x.position);
+                    i=8;
+                }
+                if(x.piece.color == this.color && x.piece != this) {
+                    i=8;
+                }
+            } else if(x.piece == null) {
+                possible.push(x.position);
+            }
+        }
+    }
+
+    //look down right
+    for(var i=0; i<8; i++) {
+        if(rank+i <= 7 && file-i >= 0) {
+            x = GetSquareByPosition([rank+i,file-i]);
+            if(x.piece != null) {
+                if(x.piece.color != this.color) {
+                    possible.push(x.position);
+                    i=8;
+                }
+                if(x.piece.color == this.color && x.piece != this) {
+                    i=8;
+                }
+            } else if(x.piece == null) {
+                possible.push(x.position);
+            }
+        }
+    }
+
+    //look up left
+    for(var i=0; i<8; i++) {
+        if(rank-i >= 0 && file+i <=7) {
+            x = GetSquareByPosition([rank-i,file+i]);
+            if(x.piece != null) {
+                if(x.piece.color != this.color) {
+                    possible.push(x.position);
+                    i=8;
+                }
+                if(x.piece.color == this.color && x.piece != this) {
+                    i=8;
+                }
+            } else if(x.piece == null) {
+                possible.push(x.position);
+            }
+        }
+    }
+
+    //look down left
+    for(var i=0; i<8; i++) {
+        if(rank-i >= 0 && file-i >= 0) {
+            x = GetSquareByPosition([rank-i,file-i]);
+            if(x.piece != null) {
+                if(x.piece.color != this.color) {
+                    possible.push(x.position);
+                    i=8;
+                }
+                if(x.piece.color == this.color && x.piece != this) {
+                    i=8;
+                }
+            } else if(x.piece == null) {
+                possible.push(x.position);
+            }
+        }
+    }
+
+    //look right
+    for(var i=0; i<8; i++) {
+        if(rank+i <= 7) {
+            x = GetSquareByPosition([rank+i,file]);
+            if(x.piece != null) {
+                if(x.piece.color != this.color) {
+                    possible.push(x.position);
+                    i=8;
+                }
+                if(x.piece.color == this.color && x.piece != this) {
+                    i=8;
+                }
+            } else if(x.piece == null) {
+                possible.push(x.position);
+            }
+        }
+    }
+
+    //look left
+    for(var i=0; i<8; i++) {
+        if(rank-i >= 0) {
+            x = GetSquareByPosition([rank-i,file]);
+            if(x.piece != null) {
+                if(x.piece.color != this.color) {
+                    possible.push(x.position);
+                    i=8;
+                }
+                if(x.piece.color == this.color && x.piece != this) {
+                    i=8;
+                }
+            } else if(x.piece == null) {
+                possible.push(x.position);
+            }
+        }
+    }
+
+    //look up
+    for(var i=0; i<8; i++) {
+        if(file+i <= 7) {
+            x = GetSquareByPosition([rank,file+i]);
+            if(x.piece != null) {
+                if(x.piece.color != this.color) {
+                    possible.push(x.position);
+                    i=8;
+                }
+                if(x.piece.color == this.color && x.piece != this) {
+                    i=8;
+                }
+            } else if(x.piece == null) {
+                possible.push(x.position);
+            }
+        }
+    }
+
+    //look down
+    for(var i=0; i<8; i++) {
+        if(file-i >= 0) {
+            x = GetSquareByPosition([rank,file-i]);
+            if(x.piece != null) {
+                if(x.piece.color != this.color) {
+                    possible.push(x.position);
+                    i=8
+                }
+                if(x.piece.color == this.color && x.piece != this) {
+                    i=8;
+                }
+            } else if(x.piece == null) {
+                possible.push(x.position);
+            }
+        }
+    }
+
+    var newPosition = [currentSquare.position[0], currentSquare.position[1]];
+
+    for(var i=0; i<possible.length; i++) {
+        var validMove = arraysEqual(newPosition, possible[i]);
+        if(validMove) {
+            break;
+        }
+    }
 
     return validMove;
 }
@@ -392,18 +626,124 @@ function King() {
 }
 
 King.prototype.ValidateMove = function(currentSquare, lastSquareOfPiece) {
-    var validMove = false;
 
-    //logic for castling (if click on rook of same color - set new position)
+    var validMove = false;
+    var rank = lastSquareOfPiece.position[0]; //x
+    var file = lastSquareOfPiece.position[1]; //y
+    var possible = [];
+    var x = null;
 
     //logic for moving 1 square in any direction - and does not put king in check
-
-    console.log('not yet implemented');
-    validMove = true;
-
-    if(validMove) {
-        this.canCastle = false;
+    //down 1
+    if(file-1 >= 0) {
+        x = GetSquareByPosition([rank,file-1]);
+        if(x.piece != null) {
+            if(x.piece.color != this.color) {
+                possible.push(x.position);
+            }
+        } else if(x.piece == null) {
+            possible.push(x.position);
+        }
     }
+
+    //up 1
+    if(file+1 <= 7) {
+        x = GetSquareByPosition([rank,file+1]);
+        if(x.piece != null) {
+            if(x.piece.color != this.color) {
+                possible.push(x.position);
+            }
+        } else if(x.piece == null) {
+            possible.push(x.position);
+        }
+    }
+
+    //left 1
+    if(rank-1 >= 0) {
+        x = GetSquareByPosition([rank-1,file]);
+        if(x.piece != null) {
+            if(x.piece.color != this.color) {
+                possible.push(x.position);
+            }
+        } else if(x.piece == null) {
+            possible.push(x.position);
+        }
+    }
+
+    //right 1
+    if(rank+1 <= 7) {
+        x = GetSquareByPosition([rank+1,file]);
+        if(x.piece != null) {
+            if(x.piece.color != this.color) {
+                possible.push(x.position);
+            }
+        } else if(x.piece == null) {
+            possible.push(x.position);
+        }
+    }
+
+    //down 1 left 1
+    if(rank-1 >= 0 && file-1 >= 0) {
+        x = GetSquareByPosition([rank-1,file-1]);
+        if(x.piece != null) {
+            if(x.piece.color != this.color) {
+                possible.push(x.position);
+            }
+        } else if(x.piece == null) {
+            possible.push(x.position);
+        }
+    }
+
+    //up 1 right 1
+    if(rank+1 <= 7 && file+1 <= 7) {
+        x = GetSquareByPosition([rank+1,file+1]);
+        if(x.piece != null) {
+            if(x.piece.color != this.color) {
+                possible.push(x.position);
+            }
+        } else if(x.piece == null) {
+            possible.push(x.position);
+        }
+    }
+
+    //down 1 right 1
+    if(rank+1 <= 7 && file-1 >= 0) {
+        x = GetSquareByPosition([rank+1,file-1]);
+        if(x.piece != null) {
+            if(x.piece.color != this.color) {
+                possible.push(x.position);
+            }
+        } else if(x.piece == null) {
+            possible.push(x.position);
+        }
+    }
+
+    //up 1 left 1
+    if(rank-1 >= 0 && file+1 <= 7) {
+        x = GetSquareByPosition([rank-1,file+1]);
+        if(x.piece != null) {
+            if(x.piece.color != this.color) {
+                possible.push(x.position);
+            }
+        } else if(x.piece == null) {
+            possible.push(x.position);
+        }
+    }
+
+    //add logic to check if in check - will need to add this logic to any pieces move validation
+
+    var newPosition = [currentSquare.position[0], currentSquare.position[1]];
+
+    //add logic for castling (if click on rook of same color - set new position)
+
+    for(var i=0; i<possible.length; i++) {
+        var validMove = arraysEqual(newPosition, possible[i]);
+        if(validMove) {
+            this.canCastle = false;
+            break;
+        }
+    }
+
     return validMove;
 }
 
