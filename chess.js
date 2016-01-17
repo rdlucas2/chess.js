@@ -819,41 +819,41 @@ function GetSquareByPosition(squarePosition) {
 }
 
 //Make the pieces
-var wKing    = new King('wKing',    'white', 'king',   '<img class="piece" id="wKing" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/wKing.gif" alt="chess piece - wking"/>');
-var wQueen   = new Queen('wQueen',   'white', 'queen',  '<img class="piece" id="wQueen" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/wQueen.gif" alt="chess piece - wqueen"/>');
-var wBishop1 = new Bishop('wBishop1', 'white', 'bishop', '<img class="piece" id="wBishop1" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/wBishop.gif" alt="chess piece - wbishop"/>');
-var wBishop2 = new Bishop('wBishop2', 'white', 'bishop', '<img class="piece" id="wBishop2" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/wBishop.gif" alt="chess piece - wbishop"/>');
-var wKnight1 = new Knight('wKnight1', 'white', 'knight', '<img class="piece" id="wKnight1" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/wKnight.gif" alt="chess piece - wknight"/>');
-var wKnight2 = new Knight('wKnight2', 'white', 'knight', '<img class="piece" id="wKnight2" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/wKnight.gif" alt="chess piece - wknight"/>');
-var wRook1   = new Rook('wRook1',   'white', 'rook',   '<img class="piece" id="wRook1" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/wRook.gif" alt="chess piece - wrook"/>');
-var wRook2   = new Rook('wRook2',   'white', 'rook',   '<img class="piece" id="wRook2" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/wRook.gif" alt="chess piece - wrook"/>');
+var wKing    = new King('wKing',    'white', 'king',   '<img class="piece" id="wKing" src="images/wking.gif" alt="chess piece - wking"/>');
+var wQueen   = new Queen('wQueen',   'white', 'queen',  '<img class="piece" id="wQueen" src="images/wqueen.gif" alt="chess piece - wqueen"/>');
+var wBishop1 = new Bishop('wBishop1', 'white', 'bishop', '<img class="piece" id="wBishop1" src="images/wbishop.gif" alt="chess piece - wbishop"/>');
+var wBishop2 = new Bishop('wBishop2', 'white', 'bishop', '<img class="piece" id="wBishop2" src="images/wbishop.gif" alt="chess piece - wbishop"/>');
+var wKnight1 = new Knight('wKnight1', 'white', 'knight', '<img class="piece" id="wKnight1" src="images/wknight.gif" alt="chess piece - wknight"/>');
+var wKnight2 = new Knight('wKnight2', 'white', 'knight', '<img class="piece" id="wKnight2" src="images/wknight.gif" alt="chess piece - wknight"/>');
+var wRook1   = new Rook('wRook1',   'white', 'rook',   '<img class="piece" id="wRook1" src="images/wrook.gif" alt="chess piece - wrook"/>');
+var wRook2   = new Rook('wRook2',   'white', 'rook',   '<img class="piece" id="wRook2" src="images/wrook.gif" alt="chess piece - wrook"/>');
 
-var wPawn1   = new Pawn('wPawn1',   'white', 'pawn',   '<img class="piece" id="wPawn1" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/wPawn.gif" alt="chess piece - wpawn"/>');
-var wPawn2   = new Pawn('wPawn2',   'white', 'pawn',   '<img class="piece" id="wPawn2" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/wPawn.gif" alt="chess piece - wpawn"/>');
-var wPawn3   = new Pawn('wPawn3',   'white', 'pawn',   '<img class="piece" id="wPawn3" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/wPawn.gif" alt="chess piece - wpawn"/>');
-var wPawn4   = new Pawn('wPawn4',   'white', 'pawn',   '<img class="piece" id="wPawn4" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/wPawn.gif" alt="chess piece - wpawn"/>');
-var wPawn5   = new Pawn('wPawn5',   'white', 'pawn',   '<img class="piece" id="wPawn5" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/wPawn.gif" alt="chess piece - wpawn"/>');
-var wPawn6   = new Pawn('wPawn6',   'white', 'pawn',   '<img class="piece" id="wPawn6" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/wPawn.gif" alt="chess piece - wpawn"/>');
-var wPawn7   = new Pawn('wPawn7',   'white', 'pawn',   '<img class="piece" id="wPawn7" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/wPawn.gif" alt="chess piece - wpawn"/>');
-var wPawn8   = new Pawn('wPawn8',   'white', 'pawn',   '<img class="piece" id="wPawn8" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/wPawn.gif" alt="chess piece - wpawn"/>');
+var wPawn1   = new Pawn('wPawn1',   'white', 'pawn',   '<img class="piece" id="wPawn1" src="images/wpawn.gif" alt="chess piece - wpawn"/>');
+var wPawn2   = new Pawn('wPawn2',   'white', 'pawn',   '<img class="piece" id="wPawn2" src="images/wpawn.gif" alt="chess piece - wpawn"/>');
+var wPawn3   = new Pawn('wPawn3',   'white', 'pawn',   '<img class="piece" id="wPawn3" src="images/wpawn.gif" alt="chess piece - wpawn"/>');
+var wPawn4   = new Pawn('wPawn4',   'white', 'pawn',   '<img class="piece" id="wPawn4" src="images/wpawn.gif" alt="chess piece - wpawn"/>');
+var wPawn5   = new Pawn('wPawn5',   'white', 'pawn',   '<img class="piece" id="wPawn5" src="images/wpawn.gif" alt="chess piece - wpawn"/>');
+var wPawn6   = new Pawn('wPawn6',   'white', 'pawn',   '<img class="piece" id="wPawn6" src="images/wpawn.gif" alt="chess piece - wpawn"/>');
+var wPawn7   = new Pawn('wPawn7',   'white', 'pawn',   '<img class="piece" id="wPawn7" src="images/wpawn.gif" alt="chess piece - wpawn"/>');
+var wPawn8   = new Pawn('wPawn8',   'white', 'pawn',   '<img class="piece" id="wPawn8" src="images/wpawn.gif" alt="chess piece - wpawn"/>');
 
-var bKing    = new King('bKing',    'black', 'king',   '<img class="piece" id="bKing" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/bKing.gif" alt="chess piece - bking"/>');
-var bQueen   = new Queen('bQueen',   'black', 'queen',  '<img class="piece" id="bQueen" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/bQueen.gif" alt="chess piece - bqueen"/>');
-var bBishop1 = new Bishop('bBishop1', 'black', 'bishop', '<img class="piece" id="bBishop1" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/bBishop.gif" alt="chess piece - bbishop"/>');
-var bBishop2 = new Bishop('bBishop2', 'black', 'bishop', '<img class="piece" id="bBishop2" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/bBishop.gif" alt="chess piece - bbishop"/>');
-var bKnight1 = new Knight('bKnight1', 'black', 'knight', '<img class="piece" id="bKnight1" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/bKnight.gif" alt="chess piece - bknight"/>');
-var bKnight2 = new Knight('bKnight2', 'black', 'knight', '<img class="piece" id="bKnight2" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/bKnight.gif" alt="chess piece - bknight"/>');
-var bRook1   = new Rook('bRook1',   'black', 'rook',   '<img class="piece" id="bRook1" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/bRook.gif" alt="chess piece - brook"/>');
-var bRook2   = new Rook('bRook2',   'black', 'rook',   '<img class="piece" id="bRook2" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/bRook.gif" alt="chess piece - brook"/>');
+var bKing    = new King('bKing',    'black', 'king',   '<img class="piece" id="bKing" src="images/bking.gif" alt="chess piece - bking"/>');
+var bQueen   = new Queen('bQueen',   'black', 'queen',  '<img class="piece" id="bQueen" src="images/bqueen.gif" alt="chess piece - bqueen"/>');
+var bBishop1 = new Bishop('bBishop1', 'black', 'bishop', '<img class="piece" id="bBishop1" src="images/bbishop.gif" alt="chess piece - bbishop"/>');
+var bBishop2 = new Bishop('bBishop2', 'black', 'bishop', '<img class="piece" id="bBishop2" src="images/bbishop.gif" alt="chess piece - bbishop"/>');
+var bKnight1 = new Knight('bKnight1', 'black', 'knight', '<img class="piece" id="bKnight1" src="images/bknight.gif" alt="chess piece - bknight"/>');
+var bKnight2 = new Knight('bKnight2', 'black', 'knight', '<img class="piece" id="bKnight2" src="images/bknight.gif" alt="chess piece - bknight"/>');
+var bRook1   = new Rook('bRook1',   'black', 'rook',   '<img class="piece" id="bRook1" src="images/brook.gif" alt="chess piece - brook"/>');
+var bRook2   = new Rook('bRook2',   'black', 'rook',   '<img class="piece" id="bRook2" src="images/brook.gif" alt="chess piece - brook"/>');
 
-var bPawn1   = new Pawn('bPawn1',   'black', 'pawn',   '<img class="piece" id="bPawn1" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/bPawn.gif" alt="chess piece - bpawn"/>');
-var bPawn2   = new Pawn('bPawn2',   'black', 'pawn',   '<img class="piece" id="bPawn2" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/bPawn.gif" alt="chess piece - bpawn"/>');
-var bPawn3   = new Pawn('bPawn3',   'black', 'pawn',   '<img class="piece" id="bPawn3" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/bPawn.gif" alt="chess piece - bpawn"/>');
-var bPawn4   = new Pawn('bPawn4',   'black', 'pawn',   '<img class="piece" id="bPawn4" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/bPawn.gif" alt="chess piece - bpawn"/>');
-var bPawn5   = new Pawn('bPawn5',   'black', 'pawn',   '<img class="piece" id="bPawn5" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/bPawn.gif" alt="chess piece - bpawn"/>');
-var bPawn6   = new Pawn('bPawn6',   'black', 'pawn',   '<img class="piece" id="bPawn6" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/bPawn.gif" alt="chess piece - bpawn"/>');
-var bPawn7   = new Pawn('bPawn7',   'black', 'pawn',   '<img class="piece" id="bPawn7" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/bPawn.gif" alt="chess piece - bpawn"/>');
-var bPawn8   = new Pawn('bPawn8',   'black', 'pawn',   '<img class="piece" id="bPawn8" src="https://raw.githubusercontent.com/rdlucas2/mySimpleChessjs/gh-pages/images/bPawn.gif" alt="chess piece - bpawn"/>');
+var bPawn1   = new Pawn('bPawn1',   'black', 'pawn',   '<img class="piece" id="bPawn1" src="images/bpawn.gif" alt="chess piece - bpawn"/>');
+var bPawn2   = new Pawn('bPawn2',   'black', 'pawn',   '<img class="piece" id="bPawn2" src="images/bpawn.gif" alt="chess piece - bpawn"/>');
+var bPawn3   = new Pawn('bPawn3',   'black', 'pawn',   '<img class="piece" id="bPawn3" src="images/bpawn.gif" alt="chess piece - bpawn"/>');
+var bPawn4   = new Pawn('bPawn4',   'black', 'pawn',   '<img class="piece" id="bPawn4" src="images/bpawn.gif" alt="chess piece - bpawn"/>');
+var bPawn5   = new Pawn('bPawn5',   'black', 'pawn',   '<img class="piece" id="bPawn5" src="images/bpawn.gif" alt="chess piece - bpawn"/>');
+var bPawn6   = new Pawn('bPawn6',   'black', 'pawn',   '<img class="piece" id="bPawn6" src="images/bpawn.gif" alt="chess piece - bpawn"/>');
+var bPawn7   = new Pawn('bPawn7',   'black', 'pawn',   '<img class="piece" id="bPawn7" src="images/bpawn.gif" alt="chess piece - bpawn"/>');
+var bPawn8   = new Pawn('bPawn8',   'black', 'pawn',   '<img class="piece" id="bPawn8" src="images/bpawn.gif" alt="chess piece - bpawn"/>');
 
 var pieces = [wQueen,   wKing,    wBishop1, wBishop2,
               wKnight1, wKnight2, wRook1,   wRook2,
