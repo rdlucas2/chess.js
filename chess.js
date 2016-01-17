@@ -819,7 +819,7 @@ function GetSquareByPosition(squarePosition) {
 }
 
 //Make the pieces
-var wKing    = new King('wKing',    'white', 'king',   '<img class="piece" id="wKing" src="images/wKing.gif" alt="chess piece - wking"/>');
+var wKing    = new King('wKing',    'white', 'king',   '<img class="piece" id="wKing" src="/images/wKing.gif" alt="chess piece - wking"/>');
 var wQueen   = new Queen('wQueen',   'white', 'queen',  '<img class="piece" id="wQueen" src="images/wQueen.gif" alt="chess piece - wqueen"/>');
 var wBishop1 = new Bishop('wBishop1', 'white', 'bishop', '<img class="piece" id="wBishop1" src="images/wBishop.gif" alt="chess piece - wbishop"/>');
 var wBishop2 = new Bishop('wBishop2', 'white', 'bishop', '<img class="piece" id="wBishop2" src="images/wBishop.gif" alt="chess piece - wbishop"/>');
